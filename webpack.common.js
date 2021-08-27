@@ -3,10 +3,8 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
-  target: 'web',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    publicPath: './',
   },
   module: {
     rules: [
@@ -26,41 +24,22 @@ module.exports = {
         ],
       },
       {
-        test: /\.css$/i,
-        loader: "css-loader",
-        options: {
-          url: true,
-        },
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader, 'css-loader',
+        ],
       },
       {
-        test: /\.(gif|png|jpe?g|svg)$/i,
+        test: /\.(png|jpg|gif)$/i,
         use: [
-          'file-loader',
           {
-            loader: 'image-webpack-loader',
+            loader: 'url-loader',
             options: {
-              mozjpeg: {
-                progressive: true,
-              },
-              // optipng.enabled: false will disable optipng
-              optipng: {
-                enabled: false,
-              },
-              pngquant: {
-                quality: [0.65, 0.90],
-                speed: 4
-              },
-              gifsicle: {
-                interlaced: false,
-              },
-              // the webp option will enable WEBP
-              webp: {
-                quality: 75
-              }
-            }
+              limit: 8192,
+            },
           },
         ],
-      }
+      },
     ],
   },
   plugins: [
