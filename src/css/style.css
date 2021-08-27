@@ -17,7 +17,7 @@
 }
 
 .game-col-goblin {
-  background-image: url(./img/goblin.png);
+  background-image: url(/img/goblin.png);
   background: rgb(148, 37, 37);
   background-position: center center;
   background-repeat: no-repeat;

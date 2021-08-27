@@ -26,10 +26,11 @@ module.exports = {
         ],
       },
       {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader, 'css-loader',
-        ],
+        test: /\.css$/i,
+        loader: "css-loader",
+        options: {
+          url: true,
+        },
       },
       {
         test: /\.(gif|png|jpe?g|svg)$/i,
