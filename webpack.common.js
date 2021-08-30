@@ -26,12 +26,7 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          {
-            loader: 'url-loader',
-            options: {
-              esModule: false,
-            },
-          },
+          MiniCssExtractPlugin.loader, 'css-loader',
         ],
       },
       {
