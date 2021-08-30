@@ -26,7 +26,12 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          MiniCssExtractPlugin.loader, 'css-loader',
+          {
+            loader: 'url-loader',
+            options: {
+              esModule: false,
+            },
+          },
         ],
       },
       {
@@ -35,6 +40,7 @@ module.exports = {
           {
             loader: 'url-loader',
             options: {
+              // mimetype: 'image/png',
               limit: 8192,
             },
           },
